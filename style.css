@@ -1,0 +1,185 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  min-height: 100vh;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #D7C3A4 0%, #B79A75 100%); 
+  color: #333;
+  box-sizing: border-box;
+  overflow-x: hidden; 
+}
+
+#game-title-container h1 { 
+  color: #5C3D2E;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-size: clamp(1.8em, 4vw, 2.5em); 
+}
+
+#game-canvas-container {
+  margin-bottom: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+canvas {
+  display: block;
+  border-radius: 8px; 
+}
+
+#game-ui-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 10px; 
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px; 
+}
+
+/* Стилі для модального вікна "спробувати ще" та "правила" */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease-in-out, visibility 0s linear 0s;
+}
+
+.modal-content {
+  background-color: #FDFBF5; 
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 420px;
+  width: calc(100% - 40px); 
+  color: #1D1D1F;
+  border: 1px solid #E5E5EA; 
+}
+
+.modal-content h2 {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Arial, sans-serif; /* Загальний шрифт для заголовків */
+  font-weight: 700; 
+  font-size: clamp(1.5em, 5vw, 1.8em); 
+  color: #28A745; /* Зелений для "Вітаю з перемогою!" */
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: clamp(0.95em, 3.5vw, 1.1em); 
+  line-height: 1.55;
+  margin-bottom: 25px;
+  color: #4F4F4F; 
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; 
+}
+
+/* Стилі для p5.js кнопок "Так" та "Ні" всередині .modal-buttons */
+/* Ці стилі будуть застосовані до <button>, створених p5.js */
+#modal-level-complete-options .modal-buttons button {
+  flex-grow: 1; 
+  max-width: 150px; 
+  /* padding та font-size краще задавати через .style() в p5.js для більшого контролю,
+     але можна тут з !important, якщо потрібно перезаписати */
+  padding: 10px 15px !important; /* Приклад, якщо потрібно перезаписати */
+  font-size: clamp(0.9em, 3vw, 1em) !important; /* Приклад */
+}
+
+/* Стилі для модального вікна правил */
+.modal-content.rules-modal {
+  max-width: 550px; 
+  text-align: left; 
+}
+
+.modal-content.rules-modal h2 {
+  text-align: center; 
+  color: #007AFF; /* Синій акцент для заголовка правил */
+  margin-bottom: 20px;
+}
+
+.modal-content p.rules-text {
+  font-size: clamp(0.9em, 2.8vw, 1.0em); 
+  line-height: 1.65;
+  margin-bottom: 15px;
+  color: #4F4F4F;
+}
+
+.modal-content p.rules-text em { 
+    font-style: italic;
+    font-weight: bold;
+}
+
+.modal-content p.rules-text sup { 
+    font-size: 0.75em;
+    vertical-align: super;
+}
+
+/* Стиль для HTML кнопки "Зрозуміло" всередині модалки правил */
+#close-rules-button {
+  background-color: #007AFF; 
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px; 
+  display: block; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#close-rules-button:hover {
+  background-color: #0056b3; 
+}
+
+
+@media (max-width: 400px) {
+  .modal-buttons {
+    flex-direction: column; 
+    gap: 10px;
+  }
+  /* Застосовуємо до ВСІХ кнопок всередині .modal-buttons */
+  .modal-buttons button {
+    max-width: 100%; 
+  }
+  #game-ui-container {
+    flex-direction: column; 
+  }
+   #game-title-container h1 {
+    font-size: 1.5em; 
+  }
+}

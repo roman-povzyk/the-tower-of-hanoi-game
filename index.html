@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ханойська Вежа</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="sketch.js"></script>
+</head>
+<body>
+    <div id="game-title-container">
+        <!-- Заголовок можна додати тут, якщо потрібно -->
+        <!-- <h1>Ханойська Вежа</h1> -->
+    </div>
+
+    <div id="game-canvas-container">
+        <!-- Канвас p5.js буде тут -->
+    </div>
+
+    <div id="game-ui-container">
+        <!-- Основні UI елементи p5.js (кількість дисків, Нова сесія) будуть тут -->
+    </div>
+
+    <!-- Контейнер для модального вікна з кнопками "Так"/"Ні" -->
+    <div id="modal-level-complete-options" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="modal-title">Вітаю з перемогою!</h2>
+            <p id="modal-message">Але цей рівень можна було пройти за X ходів.<br>Хочете спробувати перепройти його?</p>
+            <div class="modal-buttons"> <!-- Правильний атрибут class -->
+                <!-- Кнопки p5.js "Так" та "Ні" будуть прив'язані сюди -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Контейнер для модального вікна з правилами -->
+    <div id="modal-rules" class="modal-overlay">
+        <div class="modal-content rules-modal"> 
+            <h2>Правила Гри: Ханойська Вежа</h2>
+            <p class="rules-text">
+                Ханойська вежа — класична математична головоломка, винайдена французьким математиком Едуардом Лукасом у 1883 році.
+            </p>
+            <p class="rules-text">
+                У грі є три стержні й декілька дисків різного діаметра, спочатку складених у порядку від більшого до меншого на одному стержні. Ваше завдання — перемістити всю «вежу» на інший стержень, пересуваючи по одному диску за раз і ніколи не кладучи більший диск на менший.
+            </p>
+            <p class="rules-text">
+                Мінімальна кількість ходів для <em>n</em> дисків дорівнює 2<sup>n</sup> – 1, що робить гру водночас простою в правилах і глибокою за стратегією, адже з кожним доданим диском складність зростає експоненційно. Це відмінний тренажер для логічного мислення та планування наперед.
+            </p>
+            <div class="modal-buttons"> <!-- Використовуємо той самий клас для кнопок, якщо вигляд має бути схожим -->
+                <button id="close-rules-button">Зрозуміло</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
